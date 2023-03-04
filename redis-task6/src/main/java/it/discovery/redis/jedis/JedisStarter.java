@@ -1,9 +1,9 @@
 package it.discovery.redis.jedis;
 
 import it.discovery.redis.model.Book;
-import it.discovery.redis.repository.BookRepository;
 import it.discovery.redis.repository.PersonRepository;
-import it.discovery.redis.repository.jedis.JedisBookRepository;
+import it.discovery.redis.repository.jedis.JedisHashBookRepository;
+import it.discovery.redis.repository.jedis.JedisJsonBookRepository;
 import it.discovery.redis.repository.jedis.JedisPersonRepository;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public class JedisStarter {
 	
 	public static void main(String[] args) throws Exception {
 
-		try(JedisBookRepository bookRepository = new JedisBookRepository("localhost", 6379)) {
+		try(JedisHashBookRepository bookRepository = new JedisHashBookRepository("localhost", 6379)) {
 			Book book = new Book();
 			book.setId(1);
 			book.setNameEn("Redis");

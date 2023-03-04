@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import it.discovery.redis.model.Book;
 import it.discovery.redis.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.NumberUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.ScanParams;
@@ -13,7 +12,7 @@ import redis.clients.jedis.resps.ScanResult;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JedisBookRepository implements BookRepository, AutoCloseable {
+public class JedisJsonBookRepository implements BookRepository, AutoCloseable {
 
     private final static String PREFIX = "books:";
 
@@ -21,7 +20,7 @@ public class JedisBookRepository implements BookRepository, AutoCloseable {
 
     private final ObjectMapper objectMapper;
 
-    public JedisBookRepository(String host, int port) {
+    public JedisJsonBookRepository(String host, int port) {
         jedis = new Jedis(host, port);
         objectMapper = new ObjectMapper().findAndRegisterModules();
     }
