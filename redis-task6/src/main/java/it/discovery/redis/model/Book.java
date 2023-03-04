@@ -5,6 +5,7 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Book in a library
@@ -12,6 +13,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 public class Book extends BaseEntity {
 	private String nameEn;
 
@@ -21,9 +23,9 @@ public class Book extends BaseEntity {
 	
 	private Complexity complexity;
 
-	private Person author;
+	private String authorId;
 
-	private Publisher publisher;
+	private String publisherId;
 
 	/**
 	 * Publishing year
