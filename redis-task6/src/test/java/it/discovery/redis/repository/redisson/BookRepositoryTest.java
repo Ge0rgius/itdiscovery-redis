@@ -1,10 +1,11 @@
-package it.discovery.redis.repository;
+package it.discovery.redis.repository.redisson;
 
 import it.discovery.redis.BaseRedisTest;
 import it.discovery.redis.model.Book;
 import it.discovery.redis.model.Person;
 import it.discovery.redis.model.Publisher;
 import it.discovery.redis.model.Review;
+import it.discovery.redis.repository.BookRepository;
 import it.discovery.redis.repository.jedis.JedisJsonBookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -18,11 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class BookRepositoryTest extends BaseRedisTest {
 
     BookRepository bookRepository;
-    //TODO add tests for findAll/JsonHashBookRepository
 
     @BeforeEach
     void setup() {
-        bookRepository = new JedisJsonBookRepository("localhost", redis.getMappedPort(6379));
+        bookRepository = new RedissonJsonBookRepository("localhost", redis.getMappedPort(6379));
     }
 
     @Test
