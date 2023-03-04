@@ -51,14 +51,15 @@ public class JedisBookRepository implements BookRepository, AutoCloseable {
 
     @Override
     public List<Book> findAll() {
-        ScanParams scanParams = new ScanParams().count(20).match(PREFIX);
+        ScanParams scanParams = new ScanParams().count(20).match(PREFIX + "*");
         String cursor = ScanParams.SCAN_POINTER_START;
 
         List<Book> books = new ArrayList<>();
         do {
             ScanResult<String> scanResult = jedis.scan(cursor, scanParams);
             List<String> ids = scanResult.getResult();
-            books.addAll(ids.stream().map(id -> getOne(NumberUtils.parseNumber(id, Integer.class))).toList());
+            books.addAll(ids.stream().map(id -> getOne(NumberUtils.parseNumber(id.replaceAll(PREFIX, ""),
+                    Integer.class))).toList());
 
             cursor = scanResult.getCursor();
         } while (!cursor.equals(ScanParams.SCAN_POINTER_START));
