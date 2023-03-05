@@ -63,16 +63,19 @@ public class JedisHashBookRepository implements BookRepository, AutoCloseable {
 
     @Override
     public List<Book> findByName(String name) {
+        //TODO
         return null;
     }
 
     @Override
     public List<Book> findWithReviews() {
+        //TOOD
         return null;
     }
 
     @Override
     public int findTotalPages() {
+        //TODO
         return 0;
     }
 
