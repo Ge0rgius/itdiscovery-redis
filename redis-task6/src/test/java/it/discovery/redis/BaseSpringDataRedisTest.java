@@ -15,6 +15,6 @@ public class BaseSpringDataRedisTest {
 
 	@DynamicPropertySource
 	static void redisProperties(DynamicPropertyRegistry registry) {
-		registry.add("spring.redis.port", () -> redis.getMappedPort(6379));
+		registry.add("spring.data.redis.port", () -> redis.getMappedPort(6379));
 	}
 }
